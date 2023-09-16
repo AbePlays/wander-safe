@@ -3,17 +3,26 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
+    "astro": "astro",
     "build": "astro build",
+    "check-format": "biome format ./src",
+    "check-types": "astro check && tsc --noEmit",
+    "dev": "astro dev",
+    "format": "biome format --write ./src",
+    "lint": "biome check ./src",
     "preview": "astro preview",
-    "astro": "astro"
+    "validate": "pnpm check-types && pnpm check-format && pnpm lint"
   },
   "dependencies": {
+    "astro": "^3.0.7",
+    "solid-js": "^1.4.3"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.2.0",
     "@astrojs/solid-js": "^3.0.1",
     "@astrojs/tailwind": "^5.0.0",
-    "astro": "^3.0.7",
-    "solid-js": "^1.4.3",
-    "tailwindcss": "^3.0.24"
+    "@biomejs/biome": "1.2.2",
+    "tailwindcss": "^3.0.24",
+    "typescript": "^5.2.2"
   }
 }
