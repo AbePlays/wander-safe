@@ -1,4 +1,8 @@
 import Tabs from '@components/Tabs'
+import AdditionalInformation from '@containers/AdditionalInformation'
+import CoverageOptions from '@containers/CoverageOptions'
+import PersonalInformation from '@containers/PersonalInformation'
+import TripInformation from '@containers/TripInformation'
 
 const TABS = [
   {
@@ -8,7 +12,7 @@ const TABS = [
         Personal <br /> Information
       </>
     ),
-    content: <div>Personal Information</div>
+    content: <PersonalInformation />
   },
   {
     id: '2',
@@ -17,7 +21,7 @@ const TABS = [
         Trip <br /> Information
       </>
     ),
-    content: <div>Trip Information</div>
+    content: <TripInformation />
   },
   {
     id: '3',
@@ -26,7 +30,7 @@ const TABS = [
         Coverage <br /> Options
       </>
     ),
-    content: <div>Coverage Options</div>
+    content: <CoverageOptions />
   },
   {
     id: '4',
@@ -35,9 +39,10 @@ const TABS = [
         Additional <br /> Information
       </>
     ),
-    content: <div>Additional Information</div>
+    content: <AdditionalInformation />
   }
 ]
+
 export default function App() {
   return <Tabs class="mt-8" data={TABS} />
 }

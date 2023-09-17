@@ -3,7 +3,8 @@
     "jsx": "preserve",
     "jsxImportSource": "solid-js",
     "paths": {
-      "@components/*": ["./src/components/*"]
+      "@components/*": ["./src/components/*"],
+      "@containers/*": ["./src/containers/*"]
     }
   },
   "extends": "astro/tsconfigs/strictest"

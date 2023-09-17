@@ -9,7 +9,8 @@ export default defineConfig({
   vite: {
     resolve: {
       alias: {
-        '@components': path.resolve('./src/components')
+        '@components': path.resolve('./src/components'),
+        '@containers': path.resolve('./src/containers')
       }
     }
   }
