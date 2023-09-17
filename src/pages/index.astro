@@ -1,5 +1,5 @@
 ---
-import Counter from '../containers/Counter'
+import App from '../root'
 ---
 
 <!doctype html>
@@ -13,8 +13,13 @@ import Counter from '../containers/Counter'
     <title>Astro - Solidjs - Tailwind</title>
   </head>
   <body>
-    <main>
-      <Counter client:load />
+    <header class="border-b py-3 text-center">
+      <nav>
+        <a href="/">WanderSafe</a>
+      </nav>
+    </header>
+    <main class="max-w-screen-sm mx-auto px-4">
+      <App client:load />
     </main>
   </body>
 </html>
