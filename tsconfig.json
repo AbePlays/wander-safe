@@ -4,7 +4,8 @@
     "jsxImportSource": "solid-js",
     "paths": {
       "@components/*": ["./src/components/*"],
-      "@containers/*": ["./src/containers/*"]
+      "@containers/*": ["./src/containers/*"],
+      "@icons/*": ["./src/icons/*"]
     }
   },
   "extends": "astro/tsconfigs/strictest"
