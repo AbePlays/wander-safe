@@ -22,7 +22,7 @@ export default function Button(props: ButtonProps & Omit<JSX.HTMLAttributes<HTML
 
   return (
     <button
-      class={`px-8 py-3 rounded shadow transition-colors ${typography} ${Object.keys(classList)}`}
+      class={`px-6 py-2.5 rounded shadow transition-colors ${typography} ${Object.keys(classList)}`}
       type="button"
       {...rest}
     >
