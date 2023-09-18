@@ -5,7 +5,12 @@ import { defineConfig } from 'astro/config'
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), solidJs()],
+  integrations: [
+    tailwind({
+      applyBaseStyles: false
+    }),
+    solidJs()
+  ],
   vite: {
     resolve: {
       alias: {
