@@ -4,7 +4,7 @@ export type FormProps = {
   children: JSX.Element
 }
 
-function Form(props: FormProps & Omit<JSX.HTMLAttributes<HTMLFormElement>, 'class'>) {
+function Form(props: FormProps & Omit<JSX.IntrinsicElements['form'], 'class'>) {
   const { children, classList = {}, ...rest } = props
 
   return (
@@ -18,7 +18,7 @@ export type FormHeadingProps = {
   children: JSX.Element
 }
 
-Form.Heading = function Heading(props: FormHeadingProps & Omit<JSX.HTMLAttributes<HTMLHeadingElement>, 'class'>) {
+Form.Heading = function Heading(props: FormHeadingProps & Omit<JSX.IntrinsicElements['h2'], 'class'>) {
   const { children, classList = {}, ...rest } = props
 
   return (

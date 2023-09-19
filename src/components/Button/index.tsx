@@ -16,7 +16,7 @@ function getTypography(color: ButtonProps['color']): string {
   }
 }
 
-export default function Button(props: ButtonProps & Omit<JSX.HTMLAttributes<HTMLButtonElement>, 'class'>) {
+export default function Button(props: ButtonProps & Omit<JSX.IntrinsicElements['button'], 'class'>) {
   const { children, classList = {}, color = 'red', ...rest } = props
   const typography = getTypography(color)
 

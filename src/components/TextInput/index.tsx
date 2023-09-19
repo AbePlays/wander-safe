@@ -2,10 +2,9 @@ import { type JSX } from 'solid-js'
 
 export type TextInputProps = {
   label: string
-  type?: string
 }
 
-export default function TextInput(props: TextInputProps & Omit<JSX.HTMLAttributes<HTMLInputElement>, 'class'>) {
+export default function TextInput(props: TextInputProps & Omit<JSX.IntrinsicElements['input'], 'class'>) {
   const { classList = {}, label, ...rest } = props
 
   return (
