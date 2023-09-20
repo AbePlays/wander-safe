@@ -17,7 +17,7 @@ export default function TextInput(props: TextInputProps & JSX.IntrinsicElements[
           id={`${props.name}-input`}
           class={`block px-2.5 pb-1.5 pt-3 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-gray-600 peer ${
             props.class
-          } ${props.errorMessage ? 'border-red-600' : null}`}
+          } ${props.errorMessage ? 'border-red-600 border-2' : null}`}
           placeholder=" "
           type="text"
           {...newProps}

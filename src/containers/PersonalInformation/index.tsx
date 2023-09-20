@@ -58,7 +58,7 @@ export default function PersonalInformation() {
       </div>
 
       <div class="flex gap-4 font-medium text-sm">
-        <Button class="flex gap-2 items-center" color="gray">
+        <Button class="flex gap-2 items-center" disabled color="gray">
           <ArrowIcon class="rotate-180" />
           Back
         </Button>

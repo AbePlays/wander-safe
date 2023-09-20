@@ -44,5 +44,5 @@ const TABS = [
 ]
 
 export default function App() {
-  return <Tabs class="mt-8" data={TABS} />
+  return <Tabs data={TABS} />
 }
