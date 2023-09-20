@@ -1,31 +1,12 @@
-import type { JSX } from 'solid-js'
+import { splitProps, type JSX } from 'solid-js'
 
-export type FormProps = {
-  children: JSX.Element
+function Form(props: JSX.IntrinsicElements['form']) {
+  return <form {...props} />
 }
 
-function Form(props: FormProps & Omit<JSX.IntrinsicElements['form'], 'class'>) {
-  const { children, classList = {}, ...rest } = props
-
-  return (
-    <form class={`${Object.keys(classList)}`} {...rest}>
-      {children}
-    </form>
-  )
-}
-
-export type FormHeadingProps = {
-  children: JSX.Element
-}
-
-Form.Heading = function Heading(props: FormHeadingProps & Omit<JSX.IntrinsicElements['h2'], 'class'>) {
-  const { children, classList = {}, ...rest } = props
-
-  return (
-    <h2 class={`text-3xl font-bold ${Object.keys(classList)}`} {...rest}>
-      {children}
-    </h2>
-  )
+Form.Heading = function Heading(props: JSX.IntrinsicElements['h2']) {
+  const [, newProps] = splitProps(props, ['class'])
+  return <h2 class={`text-3xl font-bold ${props.class}`} {...newProps} />
 }
 
 export default Form

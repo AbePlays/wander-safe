@@ -1,5 +1,5 @@
 import { Tabs as KobalteTabs } from '@kobalte/core'
-import { For, type JSX } from 'solid-js'
+import { For, type JSX, splitProps } from 'solid-js'
 
 export type TabProps = {
   data: {
@@ -10,12 +10,12 @@ export type TabProps = {
 }
 
 export default function Tabs(props: TabProps & KobalteTabs.TabsRootProps) {
-  const { data, ...rest } = props
+  const [, newProps] = splitProps(props, ['data'])
 
   return (
-    <KobalteTabs.Root activationMode="manual" aria-label="Main navigation" {...rest}>
+    <KobalteTabs.Root activationMode="manual" aria-label="Main navigation" {...newProps}>
       <KobalteTabs.List class="flex gap-4 flex-wrap sm:flex-nowrap">
-        <For each={data}>
+        <For each={props.data}>
           {(tab) => (
             <>
               <KobalteTabs.Trigger
@@ -33,7 +33,7 @@ export default function Tabs(props: TabProps & KobalteTabs.TabsRootProps) {
         </For>
       </KobalteTabs.List>
 
-      <For each={data}>{(tab) => <KobalteTabs.Content value={tab.id}>{tab.content}</KobalteTabs.Content>}</For>
+      <For each={props.data}>{(tab) => <KobalteTabs.Content value={tab.id}>{tab.content}</KobalteTabs.Content>}</For>
     </KobalteTabs.Root>
   )
 }

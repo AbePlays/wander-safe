@@ -1,7 +1,6 @@
-import { type JSX } from 'solid-js'
+import { splitProps, type JSX } from 'solid-js'
 
 export type ButtonProps = {
-  children: JSX.Element
   color?: 'red' | 'gray'
 }
 
@@ -16,17 +15,15 @@ function getTypography(color: ButtonProps['color']): string {
   }
 }
 
-export default function Button(props: ButtonProps & Omit<JSX.IntrinsicElements['button'], 'class'>) {
-  const { children, classList = {}, color = 'red', ...rest } = props
-  const typography = getTypography(color)
+export default function Button(props: ButtonProps & JSX.IntrinsicElements['button']) {
+  const typography = getTypography(props.color)
+  const [, newProps] = splitProps(props, ['class'])
 
   return (
     <button
-      class={`px-6 py-2.5 rounded shadow transition-colors ${typography} ${Object.keys(classList)}`}
+      class={`px-6 py-2.5 rounded shadow transition-colors ${typography} ${props.class}`}
       type="button"
-      {...rest}
-    >
-      {children}
-    </button>
+      {...newProps}
+    />
   )
 }
