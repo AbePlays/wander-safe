@@ -11,9 +11,42 @@
 		-moz-appearance: textfield !important;
 	}
 
+	input:-webkit-autofill,
+	input:-webkit-autofill:hover, 
+	input:-webkit-autofill:focus, 
+	input:-webkit-autofill:active{
+		-webkit-text-fill-color: rgb(17 24 39);
+		transition: background-color 5000s ease-in-out 0s;
+		box-shadow: inset 0 0 20px 20px white;
+	}
+
 	input[type="date"]::-webkit-inner-spin-button,
 	input[type="date"]::-webkit-calendar-picker-indicator {
 		margin-top: -0.5rem;
 	}
+
+	@keyframes fade-slide-down {
+		0% {
+		  opacity: 0;
+		  transform: translateY(-20px);
+		}
+	  
+		100% {
+		  opacity: 1;
+		  transform: translateY(0);
+		}
+	  }
+	  
+	  @keyframes fade-slide-up {
+		0% {
+		  opacity: 1;
+		  transform: translateY(0);
+		}
+	  
+		100% {
+		  opacity: 0;
+		  transform: translateY(-20px);
+		}
+	  }
 }
 

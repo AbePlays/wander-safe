@@ -3,6 +3,7 @@ import { type Input, email, enumType, isoDate, length, maxLength, minLength, obj
 
 import Button from '@components/Button'
 import Form from '@components/Form'
+import Select from '@components/Select'
 import TextInput from '@components/TextInput'
 import ArrowIcon from '@icons/ArrowIcon'
 
@@ -54,7 +55,14 @@ export default function PersonalInformation() {
         <TextInput errorMessage={form().error.email} label="E-mail Address" name="email" type="email" />
         <TextInput errorMessage={form().error.phone} label="Phone Number" name="phone" type="number" />
         <TextInput errorMessage={form().error.dob} label="Date of Birth" name="dob" type="date" />
-        <TextInput errorMessage={form().error.gender} label="Gender" name="gender" />
+
+        <Select
+          errorMessage={form().error.gender}
+          label="Gender"
+          name="gender"
+          placeholder="Select an option"
+          options={['Man', 'Woman', 'Prefer not to say']}
+        />
       </div>
 
       <div class="flex gap-4 font-medium text-sm">
