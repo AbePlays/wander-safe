@@ -6,6 +6,7 @@ import Form from '@components/Form'
 import Select from '@components/Select'
 import TextInput from '@components/TextInput'
 import ArrowIcon from '@icons/ArrowIcon'
+import AcknowledgementModal from '@containers/AcknowledgementModal'
 
 const AdditionalInformationSchema = object({
   passportNumber: string([minLength(1, 'Required')]),
@@ -26,6 +27,7 @@ type FormType = {
 
 export default function AdditionalInformation(props: { decrementTab: () => void }) {
   const [form, setForm] = createSignal<FormType>({ error: {}, field: {} })
+  const [showModal, setShowModal] = createSignal(false)
 
   function validateForm(e: Event) {
     e.preventDefault()
@@ -34,6 +36,7 @@ export default function AdditionalInformation(props: { decrementTab: () => void 
 
     if (res.success) {
       setForm({ error: {}, field: res.output })
+      setShowModal(true)
     } else {
       const newForm: FormType = { error: {}, field: {} }
       res.issues.forEach((issue) => {
@@ -46,47 +49,50 @@ export default function AdditionalInformation(props: { decrementTab: () => void 
   }
 
   return (
-    <Form class="mt-12" onSubmit={validateForm}>
-      <Form.Heading>Additional Information</Form.Heading>
-      <div class="space-y-4 my-8">
-        <TextInput errorMessage={form().error.passportNumber} label="Passport Number" name="passportNumber" />
-        <TextInput errorMessage={form().error.address} label="Address" name="address" />
-        <TextInput errorMessage={form().error.city} label="City" name="city" />
-        <TextInput errorMessage={form().error.zipCode} label="Zip Code" name="zipCode" type="number" />
+    <>
+      <Form class="mt-12" onSubmit={validateForm}>
+        <Form.Heading>Additional Information</Form.Heading>
+        <div class="space-y-4 my-8">
+          <TextInput errorMessage={form().error.passportNumber} label="Passport Number" name="passportNumber" />
+          <TextInput errorMessage={form().error.address} label="Address" name="address" />
+          <TextInput errorMessage={form().error.city} label="City" name="city" />
+          <TextInput errorMessage={form().error.zipCode} label="Zip Code" name="zipCode" type="number" />
 
-        <Select
-          errorMessage={form().error.travellingWithPets}
-          label="Travelling with Pets"
-          name="travellingWithPets"
-          placeholder="Select an option"
-          options={['Yes', 'No']}
-        />
-        <Select
-          errorMessage={form().error.medicalConditions}
-          label="Any Pre-Existing Medical Conditions"
-          name="medicalConditions"
-          placeholder="Select an option"
-          options={['Yes', 'No']}
-        />
-        <Select
-          errorMessage={form().error.specialRequests}
-          label="Any Special Requirements or Requests"
-          name="specialRequests"
-          placeholder="Select an option"
-          options={['Yes', 'No']}
-        />
-      </div>
+          <Select
+            errorMessage={form().error.travellingWithPets}
+            label="Travelling with Pets"
+            name="travellingWithPets"
+            placeholder="Select an option"
+            options={['Yes', 'No']}
+          />
+          <Select
+            errorMessage={form().error.medicalConditions}
+            label="Any Pre-Existing Medical Conditions"
+            name="medicalConditions"
+            placeholder="Select an option"
+            options={['Yes', 'No']}
+          />
+          <Select
+            errorMessage={form().error.specialRequests}
+            label="Any Special Requirements or Requests"
+            name="specialRequests"
+            placeholder="Select an option"
+            options={['Yes', 'No']}
+          />
+        </div>
 
-      <div class="flex gap-4 font-medium text-sm">
-        <Button class="flex gap-2 items-center" color="gray" onClick={props.decrementTab}>
-          <ArrowIcon class="rotate-180" />
-          Back
-        </Button>
-        <Button class="flex gap-2 items-center" color="red" type="submit">
-          Get a Quote
-          <ArrowIcon class="text-white" />
-        </Button>
-      </div>
-    </Form>
+        <div class="flex gap-4 font-medium text-sm">
+          <Button class="flex gap-2 items-center" color="gray" onClick={props.decrementTab}>
+            <ArrowIcon class="rotate-180" />
+            Back
+          </Button>
+          <Button class="flex gap-2 items-center" color="red" type="submit">
+            Get a Quote
+            <ArrowIcon class="text-white" />
+          </Button>
+        </div>
+      </Form>
+      <AcknowledgementModal open={showModal()} onOpenChange={setShowModal} />
+    </>
   )
 }

@@ -27,26 +27,70 @@
 
 	@keyframes fade-slide-down {
 		0% {
-		  opacity: 0;
-		  transform: translateY(-20px);
+			opacity: 0;
+			transform: translateY(-20px);
 		}
 	  
 		100% {
-		  opacity: 1;
-		  transform: translateY(0);
+			opacity: 1;
+			transform: translateY(0);
 		}
-	  }
+	}
 	  
-	  @keyframes fade-slide-up {
+	@keyframes fade-slide-up {
 		0% {
-		  opacity: 1;
-		  transform: translateY(0);
+			opacity: 1;
+			transform: translateY(0);
 		}
 	  
 		100% {
-		  opacity: 0;
-		  transform: translateY(-20px);
+			opacity: 0;
+			transform: translateY(-20px);
 		}
-	  }
+	}
+
+	@keyframes overlay-show {
+		0% {
+			opacity: 0;
+		}
+	  
+		100% {
+			opacity: 1;
+		}
+	}
+
+	@keyframes overlay-hide {
+		0% {
+			opacity: 1;
+		}
+	  
+		100% {
+			opacity: 0;
+		}
+	}
+	  
+	@keyframes dialog-show {
+		0% {
+			opacity: 0;
+			transform: translate(-50%, -50%) scale(0.95);
+		}
+	  
+		100% {
+			opacity: 1;
+			transform: translate(-50%, -50%) scale(1);
+		}
+	}
+	  
+	@keyframes dialog-hide {
+		0% {
+			opacity: 1;
+			transform: translate(-50%, -50%) scale(1);
+		}
+	  
+		100% {
+			opacity: 0;
+			transform: translate(-50%, -50%) scale(0.95);
+		}
+	}
 }
 
