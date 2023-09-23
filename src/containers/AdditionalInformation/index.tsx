@@ -24,7 +24,7 @@ type FormType = {
   error: Partial<Record<FormKeys, string>>
 }
 
-export default function AdditionalInformation() {
+export default function AdditionalInformation(props: { decrementTab: () => void }) {
   const [form, setForm] = createSignal<FormType>({ error: {}, field: {} })
 
   function validateForm(e: Event) {
@@ -78,7 +78,7 @@ export default function AdditionalInformation() {
       </div>
 
       <div class="flex gap-4 font-medium text-sm">
-        <Button class="flex gap-2 items-center" color="gray">
+        <Button class="flex gap-2 items-center" color="gray" onClick={props.decrementTab}>
           <ArrowIcon class="rotate-180" />
           Back
         </Button>

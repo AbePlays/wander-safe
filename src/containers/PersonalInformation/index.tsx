@@ -25,7 +25,7 @@ type FormType = {
   error: Partial<Record<FormKeys, string>>
 }
 
-export default function PersonalInformation() {
+export default function PersonalInformation(props: { incrementTab: () => void }) {
   const [form, setForm] = createSignal<FormType>({ error: {}, field: {} })
 
   function validateForm(e: Event) {
@@ -35,6 +35,7 @@ export default function PersonalInformation() {
 
     if (res.success) {
       setForm({ error: {}, field: res.output })
+      props.incrementTab()
     } else {
       const newForm: FormType = { error: {}, field: {} }
       res.issues.forEach((issue) => {

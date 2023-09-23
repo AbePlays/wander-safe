@@ -22,7 +22,7 @@ type FormType = {
   error: Partial<Record<FormKeys, string>>
 }
 
-export default function CoverageOptions() {
+export default function CoverageOptions(props: { incrementTab: () => void; decrementTab: () => void }) {
   const [form, setForm] = createSignal<FormType>({ error: {}, field: {} })
 
   function validateForm(e: Event) {
@@ -32,6 +32,7 @@ export default function CoverageOptions() {
 
     if (res.success) {
       setForm({ error: {}, field: res.output })
+      props.incrementTab()
     } else {
       const newForm: FormType = { error: {}, field: {} }
       res.issues.forEach((issue) => {
@@ -90,7 +91,7 @@ export default function CoverageOptions() {
       </div>
 
       <div class="flex gap-4 font-medium text-sm">
-        <Button class="flex gap-2 items-center" color="gray">
+        <Button class="flex gap-2 items-center" color="gray" onClick={props.decrementTab}>
           <ArrowIcon class="rotate-180" />
           Back
         </Button>
