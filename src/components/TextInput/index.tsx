@@ -1,4 +1,4 @@
-import { Show, type JSX, splitProps } from 'solid-js'
+import { type JSX, Show, splitProps } from 'solid-js'
 
 export type TextInputProps = {
   errorMessage?: string | undefined

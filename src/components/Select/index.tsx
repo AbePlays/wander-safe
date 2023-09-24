@@ -12,10 +12,10 @@ export type SelectProps = {
 
 // biome-ignore lint/suspicious/noExplicitAny: <explanation>
 function Select(props: SelectProps & KobalteSelect.SelectRootProps<any>) {
-  const [, newProps] = splitProps(props, ['errorMessage', 'label', 'triggerLabel'])
+  const [, newProps] = splitProps(props, ['errorMessage', 'label', 'triggerLabel', 'multiple'])
 
   return (
-    <KobalteSelect.Root itemComponent={(props) => <Select.Item {...props} />} {...newProps}>
+    <KobalteSelect.Root itemComponent={(props) => <Select.Item {...props} />} multiple={props.multiple} {...newProps}>
       <KobalteSelect.HiddenSelect aria-errormessage={`${props.name}-error`} aria-invalid={!!props.errorMessage} />
 
       <KobalteSelect.Trigger

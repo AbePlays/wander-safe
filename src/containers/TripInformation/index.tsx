@@ -60,10 +60,7 @@ export default function TripInformation(props: { incrementTab: () => void; decre
     const formData = Object.fromEntries(new FormData(e.target as HTMLFormElement))
     const res = safeParse(TripInformationSchema, formData)
 
-    if (res.success) {
-      setForm({ error: {}, field: res.output })
-      props.incrementTab()
-    } else {
+    if (res.success === false) {
       const newForm: FormType = { error: {}, field: {} }
       res.issues.forEach((issue) => {
         const key: FormKeys = Array.isArray(issue.path) ? issue.path[0]?.key : null
@@ -73,6 +70,9 @@ export default function TripInformation(props: { incrementTab: () => void; decre
         }
       })
       setForm(newForm)
+    } else {
+      setForm({ error: {}, field: res.output })
+      props.incrementTab()
     }
   }
 

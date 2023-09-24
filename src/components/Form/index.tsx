@@ -1,4 +1,4 @@
-import { splitProps, type JSX } from 'solid-js'
+import { type JSX, splitProps } from 'solid-js'
 
 function Form(props: JSX.IntrinsicElements['form']) {
   return <form {...props} />

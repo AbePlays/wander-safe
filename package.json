@@ -3,30 +3,29 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "astro": "astro",
-    "build": "astro build",
+    "build": "vite build",
     "check-format": "biome format ./src",
-    "check-types": "astro check && tsc --noEmit",
-    "dev": "astro dev",
+    "check-types": "tsc",
+    "dev": "vite",
     "format": "biome format --write ./src",
     "lint": "biome check ./src",
-    "preview": "astro preview",
+    "serve": "vite preview",
     "validate": "pnpm check-types && pnpm check-format && pnpm lint"
   },
   "dependencies": {
     "@kobalte/core": "^0.11.0",
-    "astro": "^3.0.7",
     "date-fns": "^2.30.0",
-    "solid-js": "^1.4.3",
+    "solid-js": "^1.7.12",
     "valibot": "^0.17.0"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.2.0",
-    "@astrojs/solid-js": "^3.0.1",
-    "@astrojs/tailwind": "^5.0.0",
     "@biomejs/biome": "1.2.2",
-    "@types/node": "^20.6.2",
-    "tailwindcss": "^3.0.24",
-    "typescript": "^5.2.2"
+    "@types/node": "^20.6.4",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.30",
+    "tailwindcss": "^3.3.3",
+    "typescript": "^5.2.2",
+    "vite": "^4.4.9",
+    "vite-plugin-solid": "^2.7.0"
   }
 }

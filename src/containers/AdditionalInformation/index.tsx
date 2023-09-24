@@ -5,8 +5,8 @@ import Button from '@components/Button'
 import Form from '@components/Form'
 import Select from '@components/Select'
 import TextInput from '@components/TextInput'
-import ArrowIcon from '@icons/ArrowIcon'
 import AcknowledgementModal from '@containers/AcknowledgementModal'
+import ArrowIcon from '@icons/ArrowIcon'
 
 const AdditionalInformationSchema = object({
   passportNumber: string([minLength(1, 'Required')]),
@@ -34,10 +34,7 @@ export default function AdditionalInformation(props: { decrementTab: () => void 
     const formData = Object.fromEntries(new FormData(e.target as HTMLFormElement))
     const res = safeParse(AdditionalInformationSchema, formData)
 
-    if (res.success) {
-      setForm({ error: {}, field: res.output })
-      setShowModal(true)
-    } else {
+    if (res.success === false) {
       const newForm: FormType = { error: {}, field: {} }
       res.issues.forEach((issue) => {
         const key: FormKeys = Array.isArray(issue.path) ? issue.path[0]?.key : null
@@ -45,6 +42,9 @@ export default function AdditionalInformation(props: { decrementTab: () => void 
         newForm.field = issue.input
       })
       setForm(newForm)
+    } else {
+      setForm({ error: {}, field: res.output })
+      setShowModal(true)
     }
   }
 

@@ -1,10 +1,11 @@
-import { createSignal } from 'solid-js'
+import { createSignal, lazy } from 'solid-js'
 
 import Tabs from '@components/Tabs'
-import AdditionalInformation from '@containers/AdditionalInformation'
-import CoverageOptions from '@containers/CoverageOptions'
-import PersonalInformation from '@containers/PersonalInformation'
-import TripInformation from '@containers/TripInformation'
+
+const AdditionalInformation = lazy(() => import('@containers/AdditionalInformation'))
+const CoverageOptions = lazy(() => import('@containers/CoverageOptions'))
+const PersonalInformation = lazy(() => import('@containers/PersonalInformation'))
+const TripInformation = lazy(() => import('@containers/TripInformation'))
 
 function makeTabs(setSelectedTab: (val: string) => void) {
   const TABS = [

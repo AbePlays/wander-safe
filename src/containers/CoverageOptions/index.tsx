@@ -1,5 +1,5 @@
 import { createSignal } from 'solid-js'
-import { type Input, enumType, object, safeParse, string, minValue } from 'valibot'
+import { type Input, enumType, minValue, object, safeParse, string } from 'valibot'
 
 import Button from '@components/Button'
 import Form from '@components/Form'
@@ -30,10 +30,7 @@ export default function CoverageOptions(props: { incrementTab: () => void; decre
     const formData = Object.fromEntries(new FormData(e.target as HTMLFormElement))
     const res = safeParse(CoverageOptionsSchema, formData)
 
-    if (res.success) {
-      setForm({ error: {}, field: res.output })
-      props.incrementTab()
-    } else {
+    if (res.success === false) {
       const newForm: FormType = { error: {}, field: {} }
       res.issues.forEach((issue) => {
         const key: FormKeys = Array.isArray(issue.path) ? issue.path[0]?.key : null
@@ -41,6 +38,9 @@ export default function CoverageOptions(props: { incrementTab: () => void; decre
         newForm.field = issue.input
       })
       setForm(newForm)
+    } else {
+      setForm({ error: {}, field: res.output })
+      props.incrementTab()
     }
   }
 

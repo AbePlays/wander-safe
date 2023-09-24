@@ -1,4 +1,4 @@
-import { splitProps, type JSX } from 'solid-js'
+import { type JSX, splitProps } from 'solid-js'
 
 export default function CrossIcon(props: JSX.HTMLAttributes<SVGSVGElement>) {
   const [, newProps] = splitProps(props, ['class'])
