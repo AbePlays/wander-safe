@@ -1,3 +1,7 @@
+## Design Inspiration
+
+The design for this project came from https://www.behance.net/gallery/173509955/Multi-Step-Form-for-Travel-Insurance-Sales(Light-Dark)/modules/979562857
+
 ## Usage
 
 Those templates dependencies are maintained via [pnpm](https://pnpm.io) via `pnpm up -Lri`.
