@@ -23,7 +23,7 @@ export default function Tabs(props: TabProps & KobalteTabs.TabsRootProps) {
 
           return (
             <KobalteTabs.Trigger
-              class={`text-left w-full group ${isActive ? 'text-gray-900' : 'text-gray-400'}`}
+              class={`text-left w-full group ${isActive ? 'text-gray-900 dark:text-gray-100' : 'text-gray-400'}`}
               disabled={!isActive}
               value={tab.id}
             >

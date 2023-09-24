@@ -3,6 +3,21 @@
 @tailwind utilities;
 
 @layer base {
+	input[type="date"] {
+		position: relative;
+	}
+	  
+	  input[type="date"]::-webkit-calendar-picker-indicator {
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 100%;
+		height: 100%;
+		padding: 0;
+		color: transparent;
+		background: transparent;
+	}
+
 	input[type='number']::-webkit-outer-spin-button,
 	input[type='number']::-webkit-inner-spin-button,
 	input[type='number'] {
